@@ -5,9 +5,6 @@ const Router = require("./router");
 
 const app = {
   init: function() {
-    this.cache = {};
-    this.engines = {};
-    this.settings = {};
     this._router = undefined;
   },
   lazyrouter: function() {
@@ -23,7 +20,7 @@ app.listen = function() {
   return server.listen.apply(server, arguments);
 };
 
-app.handle = function(req, res, callback) {
+app.handle = function(req, res) {
   this._router.handle(req, res);
 };
 

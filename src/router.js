@@ -1,4 +1,3 @@
-const setPrototypeOf = require("setprototypeof");
 const parseUrl = require("parseurl");
 const Route = require("./route");
 const Layer = require("./layer");
@@ -7,16 +6,9 @@ const proto = function(options = {}) {
   const router = (req, res, next) => {
     router.handle(req, res, next);
   };
+  Object.setPrototypeOf(router, proto);
 
-  setPrototypeOf(router, proto);
-
-  /* express specific, we will go through them in later chapters */
-  router.params = {};
-  router._params = [];
-  router.caseSensitive = options.caseSensitive;
-  router.mergeParams = options.mergeParams;
-  router.strict = options.strict;
-  router.stack = []; //really important property
+  router.stack = [];
 
   return router;
 };

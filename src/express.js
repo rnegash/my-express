@@ -3,13 +3,10 @@ const mixin = require("merge-descriptors");
 const proto = require("./app");
 
 function createApplication() {
-  const app = function(req, res, next) {
-    app.handle(req, res, next);
-  };
+  const app = (req, res, next) => app.handle(req, res, next);
 
   mixin(app, proto, false);
 
-  const req = Object.create(http.IncomingMessage.prototype);
   const res = Object.create(http.ServerResponse.prototype);
 
   res.send = function(body) {

@@ -5,7 +5,6 @@ const Layer = function(path, options, fn) {
 
   this.handle = fn;
   this.name = fn.name || "<anonymous>";
-  this.params = undefined;
   this.path = undefined;
 };
 
